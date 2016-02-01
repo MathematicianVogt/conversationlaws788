@@ -153,16 +153,16 @@ class trafficconservationlaw:
 			self.truerare.append(tempsolrare)
 			
 		#Compute Solution for Shock Problem using different schemes
-		#self.computeSolution(self.shocklaxf,self.pl,1.0,"Solution - Lax Fred - Shock", laxf)
-		#self.computeSolution(self.shockgod,self.pl,1.0,"Solution - Godonov - Shock", god)
-		#self.computeSolution(self.shockeng,self.pl,1.0,"Solution - Eng Osh - Shock", eng)
-		#self.computeSolution(self.shocklaxw,self.pl,1.0,"Solution - Lax Wend - Shock", laxw)
+		self.computeSolution(self.shocklaxf,self.pl,1.0,"Solution - Lax Fred - Shock", laxf)
+		self.computeSolution(self.shockgod,self.pl,1.0,"Solution - Godonov - Shock", god)
+		self.computeSolution(self.shockeng,self.pl,1.0,"Solution - Eng Osh - Shock", eng)
+		self.computeSolution(self.shocklaxw,self.pl,1.0,"Solution - Lax Wend - Shock", laxw)
 
 		#Compute Solution for Rarefaction Problem using different schemes
-		#self.computeSolution(self.rarelaxf,1.0,self.pr,"Solution - Lax Fred - Rarefaction", laxf)
+		self.computeSolution(self.rarelaxf,1.0,self.pr,"Solution - Lax Fred - Rarefaction", laxf)
 		self.computeSolution(self.raregod,1.0,self.pr,"Solution - Godonov- Rarefaction", god)
-		#self.computeSolution(self.rareeng,1.0,self.pr,"Solution - Eng Osh- Rarefaction", eng)
-		#self.computeSolution(self.rarelaxw,1.0,self.pr,"Solution - Lax Wend- Rarefaction", laxw)
+		self.computeSolution(self.rareeng,1.0,self.pr,"Solution - Eng Osh- Rarefaction", eng)
+		self.computeSolution(self.rarelaxw,1.0,self.pr,"Solution - Lax Wend- Rarefaction", laxw)
 
 	def computeSolution(self, solutionList, ul, ur,title,numericalFlux):
 		u=solutionList[0]
@@ -221,8 +221,8 @@ class trafficconservationlaw:
 
 
 sim=trafficconservationlaw(-5,5,0,10,100,200,projflux)
-#sim.plotshock()
-#sim.plotrare()
+sim.plotshock()
+sim.plotrare()
 
 
 
