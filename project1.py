@@ -61,16 +61,17 @@ def god(flux,a,b,deltax,deltat):
 	elif (b<=a and a>= (1.0/2.0) and b>=(1.0/2.0)):
 		return flux(b)
 	elif (b<=a and b<=(1.0/2.0) and a>=(1.0/2.0)):
-		
 		return flux(1.0/2.0)
 	elif(a<=b and a<=(1.0/2.0) and b>=(1.0/2.0)):
 		val=min(a,1-b)
 		return flux(val)
+	else:
+		print "wrong"
 
 
 #Numerical flux for eng scheme
 def eng(flux,a,b,deltax,deltat):
-	return .5*(flux(a) +flux(b)) -.5*((b-a)/6.0)*(math.fabs(derv(flux,a,deltax)) +4.0*math.fabs(derv(flux,(a+b)/2.0,deltax)) + math.fabs(derv(flux,b,deltax)) )
+	return .5*(flux(a) +flux(b)) -.5*((b-a)/6.0)*(math.fabs(1-2*a) +4.0*math.fabs(1-2*((a+b)/2.0)) + math.fabs(1-2*b) )
 #Numerical flux for lax wendroff scheme
 def laxw(flux,a,b,deltax,deltat):
 	return .5*(flux(a) +flux(b)) - (deltat/(2.0*deltax))*(1-2*((a+b)/2.0))*(flux(b)-flux(a))
@@ -126,6 +127,9 @@ class trafficconservationlaw:
 		#set up IC.
 		uint1=[]
 		uint2=[]
+		regx=self.xmat
+		#for i in range(0,len(self.xmat)):
+		#	self.xmat[i]=self.xmat[i]+(self.deltax/2.0)
 		for x in self.xmat:
 			uint1.append(projectICShock(x,self.pl))
 			uint2.append(projectICRarefaction(x,self.pr))
@@ -145,13 +149,34 @@ class trafficconservationlaw:
 			tempsolshock=[]
 			tempsolrare=[]
 			
-			for j in range(0,len(self.xmat)):
+		
+			for j in range(0,len(regx)):
 				tempsolshock.append(trueSolShock(self.xmat[j],self.tmat[i],self.pl))
 				tempsolrare.append(trueSolRare(self.xmat[j],self.tmat[i],1.0,self.pr))
 			#print tempsolrare
 			self.trueshock.append(tempsolshock)
 			self.truerare.append(tempsolrare)
-			
+		'''
+		self.constantShockLF=[]
+		self.constantShockgod=[]	
+		self.constantShockeng=[]	
+		self.constantShocklaxw=[]		
+
+		temp=[]
+		for i in range(0,len(self.xmat)):
+			temp.append(1.0)
+
+		self.constantShockLF.append(temp)
+		self.constantShockgod.append(temp)
+		self.constantShockeng.append(temp)
+		self.constantShocklaxw.append(temp)
+
+		self.computeSolution(self.constantShockLF,1.0,1.0,"Solution - Lax Fred - Shock", laxf)
+		self.computeSolution(self.constantShockgod,1.0,1.0,"Solution - Godonov - Shock", god)
+		self.computeSolution(self.constantShockeng,1.0,1.0,"Solution - Eng Osh - Shock", eng)
+		self.computeSolution(self.constantShocklaxw,1.0,1.0,"Solution - Lax Wend - Shock", laxw)
+		'''
+
 		#Compute Solution for Shock Problem using different schemes
 		self.computeSolution(self.shocklaxf,self.pl,1.0,"Solution - Lax Fred - Shock", laxf)
 		self.computeSolution(self.shockgod,self.pl,1.0,"Solution - Godonov - Shock", god)
@@ -220,9 +245,9 @@ class trafficconservationlaw:
 				plt.clf()
 
 
-sim=trafficconservationlaw(-5,5,0,10,100,200,projflux)
-sim.plotshock()
-sim.plotrare()
+sim=trafficconservationlaw(-1,1,0,3,50,500,projflux)
+#sim.plotshock()
+#sim.plotrare()
 
 
 
