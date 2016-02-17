@@ -226,8 +226,7 @@ class trafficconservationlaw:
 		fig = plt.figure()
 		l, = plt.plot([], [], 'k-o')
 
-		plt.ylim(0, 2)
-		plt.xlim(self.a-1,self.b+1)
+		
 
 		with writer.saving(fig, title+ ".mp4", 100):
 			for i in range(0,len(tList)):
@@ -245,7 +244,11 @@ class trafficconservationlaw:
 				plt.clf()
 
 
+<<<<<<< Updated upstream
 sim=trafficconservationlaw(-5,5,0,5,100,200,projflux)
+=======
+sim=trafficconservationlaw(-1,1,0,3,50,500,projflux)
+>>>>>>> Stashed changes
 sim.plotshock()
 sim.plotrare()
 

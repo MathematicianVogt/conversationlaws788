@@ -22,8 +22,9 @@ class wave:
 		self.R=R
 		self.IC=IC
 		self.ICC=ICC
-		print str(self.tint)
-
+		#print str(self.tint)
+		print str(self.deltat)
+		print str(self.deltah)
 		for i in range(0,Nx+1):
 			x=self.a+i*self.deltah
 			#print x
@@ -132,7 +133,7 @@ R= lambda x: 0
 IC = lambda x: math.sin(x)
 ICC = lambda x: 0
 
-sol=wave(-4.0*math.pi,4.0*math.pi,0,4*math.pi,L,R,IC,ICC,50,100)
+sol=wave(-4.0*math.pi,4.0*math.pi,0,4*math.pi,L,R,IC,ICC,100,200)
 
 
 
