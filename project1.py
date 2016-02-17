@@ -176,7 +176,7 @@ class trafficconservationlaw:
 		self.computeSolution(self.constantShockeng,1.0,1.0,"Solution - Eng Osh - Shock", eng)
 		self.computeSolution(self.constantShocklaxw,1.0,1.0,"Solution - Lax Wend - Shock", laxw)
 		'''
-
+		
 		#Compute Solution for Shock Problem using different schemes
 		self.computeSolution(self.shocklaxf,self.pl,1.0,"Solution - Lax Fred - Shock", laxf)
 		self.computeSolution(self.shockgod,self.pl,1.0,"Solution - Godonov - Shock", god)
@@ -188,7 +188,7 @@ class trafficconservationlaw:
 		self.computeSolution(self.raregod,1.0,self.pr,"Solution - Godonov- Rarefaction", god)
 		self.computeSolution(self.rareeng,1.0,self.pr,"Solution - Eng Osh- Rarefaction", eng)
 		self.computeSolution(self.rarelaxw,1.0,self.pr,"Solution - Lax Wend- Rarefaction", laxw)
-
+		
 	def computeSolution(self, solutionList, ul, ur,title,numericalFlux):
 		u=solutionList[0]
 		unext=[]
@@ -245,9 +245,9 @@ class trafficconservationlaw:
 				plt.clf()
 
 
-sim=trafficconservationlaw(-1,1,0,3,50,500,projflux)
-#sim.plotshock()
-#sim.plotrare()
+sim=trafficconservationlaw(-5,5,0,5,100,200,projflux)
+sim.plotshock()
+sim.plotrare()
 
 
 
