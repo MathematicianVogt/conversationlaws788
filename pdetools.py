@@ -24,7 +24,7 @@ def makeMovie(xList, solList,tList,title,xlab,ylab):
 		fig = plt.figure()
 		l, = plt.plot([], [], 'k-o')
 
-		plt.ylim(0, 2)
+		plt.ylim(-2, 2)
 		plt.xlim(xList[0]-1,xList[len(xList)-1]+1)
 
 		with writer.saving(fig, title+ ".mp4", 100):
@@ -33,7 +33,7 @@ def makeMovie(xList, solList,tList,title,xlab,ylab):
 				x0 = xList
 				y0 =solList[i]
 
-				plt.xlim([-15,15])
+				plt.xlim([0,10])
 				plt.ylim([-2,2])
 				plt.plot(x0,y0)
 				plt.title(title + " Time = " + str(tList[i]))

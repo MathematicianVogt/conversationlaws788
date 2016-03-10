@@ -1,0 +1,6 @@
+2016-03-09 15:57:01,642 pyclaw.io INFO CLAW: 299 - Wrote out solution in format ascii for time t=0.0
+2016-03-09 15:57:01,642 pyclaw.controller INFO CLAW: 416 - Solution 0 computed for time t=0.000000
+2016-03-09 15:57:09,272 pyclaw.io INFO CLAW: 299 - Wrote out solution in format ascii for time t=0.2
+2016-03-09 15:57:09,272 pyclaw.controller INFO CLAW: 416 - Solution 1 computed for time t=0.200000
+2016-03-09 15:57:17,028 pyclaw.io INFO CLAW: 299 - Wrote out solution in format ascii for time t=0.4
+2016-03-09 15:57:17,028 pyclaw.controller INFO CLAW: 416 - Solution 2 computed for time t=0.400000
