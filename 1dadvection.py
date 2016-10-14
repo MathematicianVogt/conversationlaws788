@@ -40,7 +40,7 @@ def setup(use_petsc=0,kernel_language='Python',outdir='./_output',solver_type='c
     xc = state.grid.x.centers
     state.q[0,:] = np.sin(np.pi*2*xc) + 0.50
     state.problem_data['efix']=True
-    state.problem_data['a']=5.0
+    state.problem_data['a']=1.0
 
     claw = pyclaw.Controller()
     claw.tfinal = 2.0

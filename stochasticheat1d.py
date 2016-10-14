@@ -8,10 +8,10 @@ tEnd = 5
 xBegin=0
 xEnd=10
 f=lambda x: math.sin(x)
-l=lambda x: math.sin(x)
-r=lambda x: math.sin(x)
+l=lambda x: 0.0
+r=lambda x: 0.0
 Nt=1000
-Nx=100
+Nx=50
 
 dt = float(tEnd-tBegin)/Nt
 dx=float(xEnd-xBegin)/Nx
@@ -50,13 +50,14 @@ for i in range(1,Nt+1):
 	pastsol=Solution[-1]
 	for k in range(0,Nx+1):
 		if k==0:
-			temp.append(l(t[i]) + sigma*sqrtdt*np.random.normal(loc=0.0, scale=1.0))
+			temp.append(l(t[i]))
 		elif k==Nx:
-			temp.append(r(t[i]) + sigma*sqrtdt*np.random.normal(loc=0.0, scale=1.0))
+			temp.append(r(t[i]))
 		else:
-			temp.append(pastsol[k] + (c*dt/dx**2)*(pastsol[k-1] - 2*pastsol[k] + pastsol[k+1]) +(dt/dx**2)*sigma*sqrtdt*np.random.normal(loc=0.0, scale=1.0) )
+			currentRan=np.random.gamma(1.0,3.0)
+			temp.append(pastsol[k] + (c + currentRan )*(dt/dx**2)*(pastsol[k-1] - 2*pastsol[k] + pastsol[k+1]))
 
 	Solution.append(temp)
 
-makeMovie(xr,Solution,t,'Ryan is not an idiot plot','x','u')
+makeMovie(xr,Solution,t,'Still trying to find f hat','x','u')
 

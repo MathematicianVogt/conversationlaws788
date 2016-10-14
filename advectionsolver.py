@@ -10,9 +10,6 @@ def adsolver(q_l,q_r,aux_l,aux_r,problem_data):
 	s = np.empty( (num_waves, num_rp) )
 	amdq = np.empty( (num_eqn, num_rp) )
 	apdq = np.empty( (num_eqn, num_rp) )
-	print q_l
-	print q_r
-	print "dongs"
 	# Basic solve
 	wave[0,:,:] = q_r - q_l
 	s[0,:] = problem_data['a']
